@@ -21,4 +21,4 @@ Kai Angel - Damage/
 - [Публичная страница на репозиторий](https://github.com/Depcil/Kai-Angel.git)
 
 ## Демонстрация
-Сайт опубликован на GitHub Pages: [https://Depcil.github.io/jk-orsk-project/](https://Depcil.github.io/Kai-Angel/)
+Сайт опубликован на GitHub Pages: [https://Depcil.github.io/Kai-Angel/](https://Depcil.github.io/Kai-Angel/)
