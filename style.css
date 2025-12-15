@@ -1,3 +1,4 @@
+
 :root {
   --primary-color: #ff00ff;
   --secondary-color: #00f7ff;
@@ -234,6 +235,9 @@ body {
   position: relative;
   height: 100%;
   transform-origin: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 0 auto;
 }
 
 .video-card:hover {
@@ -261,7 +265,7 @@ body {
 
 .video-cover {
   width: 100%;
-  height: 200px;
+  height: 220px;
   background: url('assets/background.jpg') no-repeat center center;
   background-size: cover;
   border-bottom: 3px solid var(--primary-color);
@@ -307,6 +311,10 @@ body {
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 1.3;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .contact-section {
@@ -330,10 +338,6 @@ body {
   margin-bottom: 1.5rem;
   color: var(--secondary-color);
   text-shadow: 0 0 10px var(--secondary-color);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  max-width: 100%;
 }
 
 .contact-section p {
@@ -346,10 +350,14 @@ body {
 
 .contact-section a {
   color: var(--secondary-color);
-  text-decoration: none;
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
   font-weight: 600;
-  position: relative;
-  padding: 0 5px;
+}
+
+.contact-section a:hover {
+  text-decoration-color: var(--primary-color);
 }
 
 .contact-section a::after {
@@ -433,6 +441,10 @@ body {
     gap: 20px;
   }
   
+  .video-card {
+    max-width: 280px;
+  }
+  
   .video-cover {
     height: 180px;
   }
@@ -447,9 +459,7 @@ body {
   }
   
   .contact-section h2 {
-    white-space: nowrap !important;
-    font-size: 1.8rem !important;
-    max-width: 90vw !important;
+    font-size: 2rem;
   }
   
   .contact-section p {
@@ -480,29 +490,6 @@ body {
   
   .nav-link {
     font-size: 1rem;
-  }
-  
-  .contact-section h2 {
-    max-width: 80vw !important;
-    font-size: 1.5rem !important;
-  }
-}
-
-/* Дополнительная адаптивность для очень маленьких экранов (< 360px) */
-@media (max-width: 360px) {
-  .contact-section h2 {
-    max-width: 90vw !important;
-    font-size: 1.6rem !important;
-  }
-  
-  .contact-section .container {
-    padding: 1.2rem !important;
-    margin: 0 10px !important;
-  }
-  
-  .contact-section p {
-    font-size: 0.9rem !important;
-    padding: 0 5px !important;
   }
 }
 
@@ -539,5 +526,28 @@ body {
   .nav-link {
     font-size: 1.1rem;
     padding: 0.7rem 1.5rem;
+  }
+}
+
+/* Размеры карточек (767px - 450px) */
+@media (max-width: 767px) and (min-width: 450px) {
+  .video-card {
+    max-width: 300px !important;
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
+  
+  .video-cover {
+    height: 200px !important;
+  }
+  
+  .video-title {
+    min-height: 60px !important;
+    font-size: 1.2rem !important;
+  }
+  
+  .video-grid {
+    justify-content: center !important;
+    padding: 0 15px !important;
   }
 }
