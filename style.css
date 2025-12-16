@@ -1,4 +1,3 @@
-
 :root {
   --primary-color: #ff00ff;
   --secondary-color: #00f7ff;
@@ -107,10 +106,6 @@ body {
   transform: translateX(100%);
 }
 
-.nav-link:active {
-  transform: translateY(0);
-}
-
 .about-section {
   padding: 4rem 0;
   position: relative;
@@ -151,12 +146,6 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 0, 255, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  animation: pulse 4s infinite alternate;
-}
-
-@keyframes pulse {
-  0% { box-shadow: 0 0 15px rgba(255, 0, 255, 0.4); }
-  100% { box-shadow: 0 0 25px rgba(255, 0, 255, 0.7); }
 }
 
 .about-section h2 {
@@ -221,6 +210,7 @@ body {
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 25px;
   padding: 0 10px;
+  justify-content: center;
 }
 
 .video-card {
@@ -235,32 +225,15 @@ body {
   position: relative;
   height: 100%;
   transform-origin: center;
-  width: 100%;
   max-width: 320px;
   margin: 0 auto;
+  width: 100%;
 }
 
 .video-card:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 15px 35px rgba(255, 0, 255, 0.4);
   z-index: 10;
-}
-
-.video-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, transparent, rgba(255, 0, 255, 0.15), transparent);
-  opacity: 0;
-  transition: var(--transition);
-  z-index: 1;
-}
-
-.video-card:hover::before {
-  opacity: 1;
 }
 
 .video-cover {
@@ -285,13 +258,6 @@ body {
   padding: 2px 8px;
   border-radius: 12px;
   opacity: 0.9;
-  animation: pulseNew 2s infinite;
-}
-
-@keyframes pulseNew {
-  0% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.1); opacity: 1; }
-  100% { transform: scale(1); opacity: 0.9; }
 }
 
 .video-title {
@@ -326,38 +292,33 @@ body {
   max-width: 700px;
   margin: 0 auto;
   padding: 2.5rem;
-  background: rgba(25, 15, 40, 0.7);
-  border-radius: 20px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(0, 247, 255, 0.4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
 .contact-section h2 {
   font-size: 2.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   color: var(--secondary-color);
   text-shadow: 0 0 10px var(--secondary-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 .contact-section p {
   font-size: 1.3rem;
   color: #e0d6ff;
-  margin-top: 1rem;
+  margin: 1.5rem 0;
   font-weight: 300;
   word-break: break-word;
 }
 
 .contact-section a {
   color: var(--secondary-color);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 2px;
+  text-decoration: none;
   font-weight: 600;
-}
-
-.contact-section a:hover {
-  text-decoration-color: var(--primary-color);
+  position: relative;
+  padding: 0 5px;
 }
 
 .contact-section a::after {
@@ -376,6 +337,62 @@ body {
   transform: scaleX(1);
 }
 
+.feedback-form {
+  max-width: 600px;
+  margin: 2rem auto 0;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  background: rgba(20, 15, 35, 0.7);
+  border: 1px solid rgba(100, 80, 150, 0.5);
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 2px rgba(0, 247, 255, 0.3);
+}
+
+.submit-btn {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-block;
+  margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 0, 255, 0.4);
+}
+
 .footer {
   background: rgba(10, 5, 20, 0.9);
   padding: 2rem 0;
@@ -390,12 +407,7 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Мобильные устройства (< 768px) */
 @media (max-width: 768px) {
-  :root {
-    --card-radius: 15px;
-  }
-  
   .logo {
     font-size: 1.5rem;
     margin-bottom: 0.8rem;
@@ -439,6 +451,7 @@ body {
   .video-grid {
     grid-template-columns: 1fr;
     gap: 20px;
+    padding: 0;
   }
   
   .video-card {
@@ -450,8 +463,7 @@ body {
   }
   
   .video-title {
-    font-size: 1.1rem !important;
-    -webkit-line-clamp: 2 !important;
+    font-size: 1.1rem;
   }
   
   .contact-section {
@@ -459,16 +471,27 @@ body {
   }
   
   .contact-section h2 {
-    font-size: 2rem;
+    white-space: nowrap !important;
+    font-size: 1.8rem !important;
+    max-width: 90vw !important;
   }
   
   .contact-section p {
     font-size: 1.1rem;
   }
   
-  .contact-section a {
-    font-size: 1.1rem !important;
-    word-break: break-word !important;
+  .feedback-form {
+    padding: 0 10px;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+  
+  .submit-btn {
+    width: 100%;
   }
   
   .footer p {
@@ -477,7 +500,6 @@ body {
   }
 }
 
-/* Очень маленькие экраны (< 480px) */
 @media (max-width: 480px) {
   .about-section h2 {
     font-size: 1.5rem;
@@ -491,9 +513,13 @@ body {
   .nav-link {
     font-size: 1rem;
   }
+  
+  .contact-section h2 {
+    max-width: 80vw !important;
+    font-size: 1.5rem !important;
+  }
 }
 
-/* Планшеты (768px - 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
   .video-grid {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -503,22 +529,9 @@ body {
   .video-cover {
     height: 190px;
   }
-  
-  .about-section .container {
-    padding: 1.5rem;
-  }
-  
-  .contact-section .container {
-    padding: 2rem;
-  }
 }
 
-/* Десктопы (> 1024px) */
 @media (min-width: 1024px) {
-  .video-grid {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  }
-  
   .video-cover {
     height: 220px;
   }
@@ -529,25 +542,24 @@ body {
   }
 }
 
-/* Размеры карточек (767px - 450px) */
 @media (max-width: 767px) and (min-width: 450px) {
   .video-card {
-    max-width: 300px !important;
-    width: 90% !important;
-    margin: 0 auto !important;
+    max-width: 300px;
+    width: 90%;
+    margin: 0 auto;
   }
   
   .video-cover {
-    height: 200px !important;
+    height: 200px;
   }
   
   .video-title {
-    min-height: 60px !important;
-    font-size: 1.2rem !important;
+    min-height: 60px;
+    font-size: 1.2rem;
   }
   
   .video-grid {
-    justify-content: center !important;
-    padding: 0 15px !important;
+    justify-content: center;
+    padding: 0 15px;
   }
 }
